@@ -48,6 +48,7 @@ A sample project for simulating and modeling retail point-of-sale (POS) data. It
 
 ## Data Generation
 
-Run the data generation script to populate the database with synthetic data:
+**Run the data generation script to populate the database with synthetic data:**
+
     ```bash
     python datageneration.py

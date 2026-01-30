@@ -115,6 +115,7 @@ for i in range(NUM_CUSTOMER):
 conn.commit()
 
 # -- transaction and transaction_item generation --
+new = 0
 for i in range(NUM_TRANSACTIONS):
     # Generate a unique transaction ID using UUID5
     transaction_id = str(uuid.uuid5(uuid.NAMESPACE_DNS, f"transaction-{i}"))
@@ -135,9 +136,7 @@ for i in range(NUM_TRANSACTIONS):
 
     for i in range(num_item):
         # Generate a unique transaction item ID using UUID5
-        transaction_item_id = str(
-            uuid.uuid5(uuid.NAMESPACE_DNS, f"transaction_item-{i}")
-        )
+        transaction_item_id = str(uuid.uuid4())
         product_id = random.choice(products)
         quantity = random.randint(1, 5)
         unit_price = round(random.uniform(1, 100), 2)
@@ -168,6 +167,7 @@ for i in range(NUM_TRANSACTIONS):
         """UPDATE transactions SET total_amount=%s WHERE transaction_id=%s""",
         (items_total, transaction_id),
     )
+
 
 # Commit all transaction and transaction item records
 conn.commit()
